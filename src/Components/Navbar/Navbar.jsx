@@ -41,6 +41,8 @@ const Navbar = () => {
           credentials: "include",
         });
 
+        console.log(await response.json());
+
         if (response.ok) {
           const data = await response.json();
           setIsLoggedIn(data.success);
