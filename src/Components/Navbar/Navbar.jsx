@@ -68,12 +68,12 @@ const Navbar = () => {
       };
     };
   };
-  const handleMenuButtonClickk = () => {
-    console.log(isLoggedIn, userRole);
-    if (!isLoggedIn) {
+  const handleMenuButtonClickk = async () => {
+    const data = await checkLogin();
+    if (!data.success) {
       navigate('/login');
     } else {
-      if (userRole === 'employer') {
+      if (data.userrole === 'employer') {
         navigate('/dashboard/employer/profile');
       } else {
         alert("hesabinizdan cikis yapiniz ve employer olarak kayit olun ")
