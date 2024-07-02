@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { MdLockOutline } from "react-icons/md";
@@ -5,7 +7,16 @@ import { MdLockOutline } from "react-icons/md";
 import profile from "../../assets/user-128.svg";
 
 const Settings = () => {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({
+    name: '',
+    phone: '',
+    userrole: '',
+    email: '',
+    avatar: '',
+    currentpassword: '',
+    newpassword1: '',
+    newpassword2: ''
+  });
 
   const getUser = async () => {
     const response = await fetch("https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user", {
@@ -15,12 +26,42 @@ const Settings = () => {
 
     const data = await response.json();
 
-    setUser(data.user)
-    console.log(data)
+    setUser(data.user);
+    console.log(data);
   }
+
+  const updateProfile = async () => {
+    const formData = {
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+      currentpassword: document.getElementById('currentpassword').value,
+      newpassword1: document.getElementById('newpassword1').value,
+      newpassword2: document.getElementById('newpassword2').value,
+    };
+
+    const res = await fetch("https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user/update", {
+      method: 'PUT',
+      credentials: "include",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      alert('Profil başarıyla güncellendi');
+    } else {
+      alert('Güncelleme sırasında bir hata oluştu');
+      console.log(data);
+    }
+  }
+
   useEffect(() => {
-    getUser()
+    getUser();
   }, [])
+
   return (
     <div className="flex justify-center w-full">
       <div className="w-11/12">
@@ -42,7 +83,7 @@ const Settings = () => {
             </div>
             <div className="flex w-10/12 flex-col">
               <div className="w-full flex flex-col sm:flex-row">
-                <div className="w-full sm:w-1/2 sm:px-6  pl-3">
+                <div className="w-full sm:w-1/2 sm:px-6 pl-3">
                   <h5 className="py-3">Ad-soyad</h5>
                   <input
                     className="border p-2 rounded-sm w-full"
@@ -52,7 +93,7 @@ const Settings = () => {
                     id="name"
                   />
                 </div>
-                <div className="w-full sm:w-1/2 sm:px-6  pl-3">
+                <div className="w-full sm:w-1/2 sm:px-6 pl-3">
                   <h5 className="py-3">Mobil telefon</h5>
                   <input
                     className="border p-2 rounded-sm w-full"
@@ -64,7 +105,7 @@ const Settings = () => {
                 </div>
               </div>
               <div className="w-full flex flex-col sm:flex-row">
-                <div className="w-full sm:w-1/2 sm:px-6  pl-3">
+                <div className="w-full sm:w-1/2 sm:px-6 pl-3">
                   <h5 className="py-3">hesabın növü</h5>
                   <div className="bg-green-600 flex items-center justify-center cursor-pointer text-white p-2 rounded-sm w-full">
                     {user.userrole}
@@ -94,20 +135,38 @@ const Settings = () => {
           <div className="w-full grid gap-6 sm:grid-cols-2 lg:grid-cols-3 py-6">
             <div className="px-6">
               <h5 className="py-3">indiki parol</h5>
-              <input className="border p-2 rounded-sm w-full" type="password" />
+              <input 
+                name="currentpassword" 
+                className="border p-2 rounded-sm w-full" 
+                type="password" 
+                id="currentpassword"
+              />
             </div>
             <div className="px-6">
               <h5 className="py-3">yeni parol</h5>
-              <input className="border p-2 rounded-sm w-full" type="password" />
+              <input 
+                name="newpassword1" 
+                className="border p-2 rounded-sm w-full" 
+                type="password" 
+                id="newpassword1"
+              />
             </div>
             <div className="px-6">
               <h5 className="py-3">yeni parolu təkrarla</h5>
-              <input className="border p-2 rounded-sm w-full" type="password" />
+              <input 
+                name="newpassword2" 
+                className="border p-2 rounded-sm w-full" 
+                type="password" 
+                id="newpassword2"
+              />
             </div>
           </div>
         </div>
         <div className="w-full flex justify-end items-center h-36">
-          <button className="w-36 h-12 rounded-md text-white bg-blue-500">
+          <button 
+            className="w-36 h-12 rounded-md text-white bg-blue-500"
+            onClick={updateProfile}
+          >
             Yadda saxla
           </button>
         </div>
