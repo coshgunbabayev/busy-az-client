@@ -21,7 +21,7 @@
 // //     }),
 // //     onSubmit: async (values, { setSubmitting, setErrors }) => {
 // //       try {
-// //         const response = await fetch('https://busy-az-api-9c92d29fca5a.herokuapp.com/api/vacancy', {
+// //         const response = await fetch('https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/vacancy', {
 // //           method: 'POST',
 // //           headers: {
 // //             'Content-Type': 'application/json',
@@ -165,7 +165,7 @@
 //     }),
 //     onSubmit: async (values, { setSubmitting, setErrors }) => {
 //       try {
-//         const response = await fetch('https://busy-az-api-9c92d29fca5a.herokuapp.com/api/vacancy', {
+//         const response = await fetch('https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/vacancy', {
 //           method: 'POST',
 //           headers: {
 //             'Content-Type': 'application/json',
@@ -310,7 +310,7 @@ const EPost = () => {
     }),
     onSubmit: async (values, { setSubmitting, setErrors }) => {
       try {
-        const response = await fetch('https://busy-az-api-9c92d29fca5a.herokuapp.com/api/vacancy', {
+        const response = await fetch('https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/vacancy', {
           method: 'POST',
           credentials: "include",
           headers: {

@@ -9,7 +9,7 @@ const initialState = {
 
 export const getUsers = createAsyncThunk("users/getUsers", async () => {
   try {
-    const response = await fetch("https://busy-az-api-9c92d29fca5a.herokuapp.com/api/user/freelancers");
+    const response = await fetch("https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user/freelancers");
     if (!response.ok) {
       throw new Error("Failed to fetch users");
     }
@@ -22,7 +22,7 @@ export const getUsers = createAsyncThunk("users/getUsers", async () => {
 
 export const getDetailUser = createAsyncThunk("users/getDetailUser", async (_id) => {
   try {
-    const response = await fetch(`https://busy-az-api-9c92d29fca5a.herokuapp.com/api/user/freelancer/${_id}`);
+    const response = await fetch(`https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user/freelancer/${_id}`);
     if (!response.ok) {
       throw new Error("Failed to fetch user details");
     }

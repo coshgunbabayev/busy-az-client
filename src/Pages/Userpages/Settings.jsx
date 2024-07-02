@@ -19,7 +19,7 @@ const Settings = () => {
   });
 
   const getUser = async () => {
-    const response = await fetch("https://busy-az-api-9c92d29fca5a.herokuapp.com/api/user", {
+    const response = await fetch("https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user", {
       method: "GET",
       credentials: "include"
     });
@@ -40,7 +40,7 @@ const Settings = () => {
       newpassword2: document.getElementById('newpassword2').value,
     };
 
-    const res = await fetch("https://busy-az-api-9c92d29fca5a.herokuapp.com/api/user/update", {
+    const res = await fetch("https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user/update", {
       method: 'PUT',
       credentials: "include",
       headers: {

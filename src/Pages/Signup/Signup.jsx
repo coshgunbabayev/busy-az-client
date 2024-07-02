@@ -22,7 +22,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const checkLogin = async () => {
-    const response = await fetch("https://busy-az-api-9c92d29fca5a.herokuapp.com/api/user", {
+    const response = await fetch("https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user", {
       method: "GET",
       credentials: "include",
     });
@@ -45,7 +45,7 @@ const Signup = () => {
   const handleSubmit = async (values, actions) => {
     try {
       setIsPosting(true);
-      const res = await fetch("https://busy-az-api-9c92d29fca5a.herokuapp.com/api/user/signup", {
+      const res = await fetch("https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user/signup", {
         method: 'POST',
         credentials: "include",
         headers: {

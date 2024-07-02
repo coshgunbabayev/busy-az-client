@@ -7,7 +7,7 @@
 //   const [error, setError] = useState(null);
 //   const fetchVacancies = async () => {
 //     try {
-//       const response = await fetch("https://busy-az-api-9c92d29fca5a.herokuapp.com/api/user/looks", {
+//       const response = await fetch("https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user/looks", {
 //         method: "GET",
 //         credentials: "include"
 //       });
@@ -57,7 +57,7 @@ const Bookmarks = () => {
 
   const fetchVacancies = async () => {
     try {
-      const response = await fetch("https://busy-az-api-9c92d29fca5a.herokuapp.com/api/user/looks", {
+      const response = await fetch("https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/user/looks", {
         method: "GET",
         credentials: "include",
       });

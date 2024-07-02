@@ -12,7 +12,7 @@ export const getVacancies = createAsyncThunk(
   async () => {
     try {
       const response = await fetch(
-        "https://busy-az-api-9c92d29fca5a.herokuapp.com/api/vacancy"
+        "https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/vacancy"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch vacancies");
@@ -31,7 +31,7 @@ export const getDetailVacancy = createAsyncThunk(
   async (_id) => {
     try {
       const response = await fetch(
-        `https://busy-az-api-9c92d29fca5a.herokuapp.com/api/vacancy/${_id}`
+        `https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/vacancy/${_id}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch vacancy details");
@@ -49,7 +49,7 @@ export const deleteVacancy = createAsyncThunk(
   async (_id) => {
     try {
       const response = await fetch(
-        `https://busy-az-api-9c92d29fca5a.herokuapp.com/api/vacancy/${_id}`,
+        `https://busy-az-api-b6d690c9bf5a.herokuapp.com/api/vacancy/${_id}`,
         {
           method: "DELETE",
           credentials:"include"
