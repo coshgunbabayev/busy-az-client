@@ -29,51 +29,44 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const checkLogin = async () => {
-      try {
-        const response = await fetch("https://busy-az-api-9c92d29fca5a.herokuapp.com/api/user", {
-          method: "GET",
-          credentials: "include",
-        });
-
-        console.log(await response.json());
-
-        if (response.ok) {
-          const data = await response.json();
-          setIsLoggedIn(data.success);
-          setUserRole(data.user.userrole);
-        } else {
-          setIsLoggedIn(false);
-          setUserRole('');
-        }
-      } catch (error) {
-        console.error("Error checking login:", error);
-        setIsLoggedIn(false);
-        setUserRole('');
-      }
-    };
-
     checkLogin();
   }, []);
 
-  const handleMenuButtonClick = () => {
-    console.log(isLoggedIn, userRole);
-    if (!isLoggedIn) {
+  const checkLogin = async () => {
+    try {
+      const response = await fetch("https://busy-az-api-9c92d29fca5a.herokuapp.com/api/check/user", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const data = await response.json();
+      console.log("++++++ ::::: ", data);
+      return data;
+    } catch (error) {
+      console.error("Error checking login:", error);
+      return {
+        success: false,
+        userrole: ""
+      };
+    };
+  };
+
+  const handleMenuButtonClick = async () => {
+    const data = await checkLogin();
+    if (!data.success) {
       navigate('/login');
     } else {
-      if (userRole === 'admin') {
-        navigate('/admin');
-      } else if (userRole === 'employer') {
+      if (data.userrole === 'employer') {
         navigate('/dashboard/employer/profile');
       } else {
         navigate('/dashboard/freelancer/profile');
-      }
-    }
+      };
+    };
   };
   const handleMenuButtonClickk = () => {
     console.log(isLoggedIn, userRole);
