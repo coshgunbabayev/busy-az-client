@@ -48,7 +48,7 @@ const Settings = () => {
                     className="border p-2 rounded-sm w-full"
                     type="text"
                     name="name"
-                    value={user.name}
+                    defaultValue={user.name}
                     id="name"
                   />
                 </div>
@@ -58,7 +58,7 @@ const Settings = () => {
                     className="border p-2 rounded-sm w-full"
                     type="text"
                     name="phone"
-                    value={user.phone}
+                    defaultValue={user.phone}
                     id="phone"
                   />
                 </div>
@@ -76,7 +76,7 @@ const Settings = () => {
                     className="border p-2 rounded-sm w-full"
                     type="text"
                     name="email"
-                    value={user.email}
+                    defaultValue={user.email}
                     id="email"
                   />
                 </div>
